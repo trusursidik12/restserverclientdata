@@ -78,7 +78,7 @@ class Sukoharjo_m extends CI_Model
 	{
 		date_default_timezone_set("Asia/Bangkok");
 		$data = array(
-			'id_stasiun' 		=> $this->input->post('id_stasiun'),
+			'id_stasiun' 		=> 'CEMS_RUM',
 			'waktu' 			=> $this->input->post('waktu'),
 			'h2s' 				=> $this->input->post('h2s'),
 			'cs2' 				=> $this->input->post('cs2'),
