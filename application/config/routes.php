@@ -1,6 +1,15 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//SUKOHARJO
+$route['api/get/data/cemsrum']			= 'sukoharjo/cemsrumdata';
+$route['api/get/data/plesan']			= 'sukoharjo/plesandata';
+$route['api/get/data/gupit']			= 'sukoharjo/gupitdata';
+$route['api/get/data/rum']				= 'sukoharjo/rumdata';
+
+$route['api/add/cemsdata/sukoharjo']	= 'sukoharjo/cemsdata';
+$route['api/add/camsdata/sukoharjo']	= 'sukoharjo/camsdata';
+
 //CILEGON
 $route['api/get/data/pci']				= 'cilegon/pcidata';
 $route['api/get/ispu/pci']				= 'cilegon/pciispu';
