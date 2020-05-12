@@ -6,23 +6,26 @@ require APPPATH . 'libraries/Format.php';
 
 class Cilegon extends RestController {
 
-    public function __construct()
-    {
-    	parent::__construct();
-    }
-
     public function aqmdata_post()
     {
-        if($this->cilegon_m->add_aqmsdata() > 0){
-            $this->response([
-                    'status'    => true,
-                    'data'      => 'Data Berhasil Ditambah'
-                ], 200);
-        }else{
-            $this->response([
-                    'status'    => false,
-                    'message'   => 'Data Tidak Ditemukan'
-                ], 404);
+        $id_stasiun = $this->post('id_stasiun');
+        $waktu = $this->post('waktu');
+        $aqmdata = $this->cilegon_m->get($id_stasiun, $waktu);
+        if($aqmdata){
+            $update = $this->cilegon_m->update_aqmdata($id_stasiun, $waktu);
+            if($update){
+                $this->response(array('response' => 'success', 'aqmdata' => 'Data Berhasil diupdate' ), 201);
+            } else {
+                $this->response(array('response' => 'fail', 502));
+            }
+        } else {
+            $insert = $this->cilegon_m->add_aqmdata();
+            if($insert){
+                $aqmdata = $this->cilegon_m->get($id_stasiun, $waktu);
+                $this->response(array('response' => 'success', 'aqmdata' => 'Data Berhasil ditambah' ), 201);
+            }else{
+                $this->response(array('response' => 'fail', 502));
+            }
         }
     }
 

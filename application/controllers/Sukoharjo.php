@@ -6,38 +6,49 @@ require APPPATH . 'libraries/Format.php';
 
 class Sukoharjo extends RestController {
 
-    public function __construct()
+    public function cemsdata_post()
     {
-    	parent::__construct();
+        $id_stasiun = 'CEMS_RUM';
+        $waktu = $this->post('waktu');
+        $aqmdata = $this->sukoharjo_m->get_cems($id_stasiun, $waktu);
+        if($aqmdata){
+            $update = $this->sukoharjo_m->update_cemsdata($id_stasiun, $waktu);
+            if($update){
+                $this->response(array('response' => 'success', 'aqmdata' => 'Data Berhasil diupdate' ), 201);
+            } else {
+                $this->response(array('response' => 'fail', 502));
+            }
+        } else {
+            $insert = $this->sukoharjo_m->add_cemsdata();
+            if($insert){
+                $aqmdata = $this->sukoharjo_m->get_cems($id_stasiun, $waktu);
+                $this->response(array('response' => 'success', 'aqmdata' => 'Data Berhasil ditambah' ), 201);
+            }else{
+                $this->response(array('response' => 'fail', 502));
+            }
+        }
     }
 
     public function camsdata_post()
     {
-        if($this->sukoharjo_m->add_camsdata() > 0){
-            $this->response([
-                    'status'    => true,
-                    'data'      => 'Data Berhasil Ditambah'
-                ], 200);
-        }else{
-            $this->response([
-                    'status'    => false,
-                    'message'   => 'Data Tidak Ditemukan'
-                ], 404);
-        }
-    }
-
-    public function cemsdata_post()
-    {
-        if($this->sukoharjo_m->add_cemsdata() > 0){
-            $this->response([
-                    'status'    => true,
-                    'data'      => 'Data Berhasil Ditambah'
-                ], 200);
-        }else{
-            $this->response([
-                    'status'    => false,
-                    'message'   => 'Data Tidak Ditemukan'
-                ], 404);
+        $id_stasiun = $this->post('id_stasiun');
+        $waktu = $this->post('waktu');
+        $aqmdata = $this->sukoharjo_m->get_cems($id_stasiun, $waktu);
+        if($aqmdata){
+            $update = $this->sukoharjo_m->update_camsdata($id_stasiun, $waktu);
+            if($update){
+                $this->response(array('response' => 'success', 'aqmdata' => 'Data Berhasil diupdate' ), 201);
+            } else {
+                $this->response(array('response' => 'fail', 502));
+            }
+        } else {
+            $insert = $this->sukoharjo_m->add_camsdata();
+            if($insert){
+                $aqmdata = $this->sukoharjo_m->get_cems($id_stasiun, $waktu);
+                $this->response(array('response' => 'success', 'aqmdata' => 'Data Berhasil ditambah' ), 201);
+            }else{
+                $this->response(array('response' => 'fail', 502));
+            }
         }
     }
 

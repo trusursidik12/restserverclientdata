@@ -2,6 +2,11 @@
 
 class Sukoharjo_m extends CI_Model
 {
+	public function __construct()
+    {
+    	parent::__construct();
+        date_default_timezone_set('Asia/Jakarta');
+    }
 
 	public function get_rumdata($id = FALSE)
 	{
@@ -55,6 +60,22 @@ class Sukoharjo_m extends CI_Model
 		return $query->row_array();
 	}
 
+	public function get_cems($id_stasiun, $waktu)
+	{
+		$this->db->where('id_stasiun', $id_stasiun);
+        $this->db->where('waktu', $waktu);
+		$query = $this->db->get('aqm_data');
+		return $query->result();
+	}
+
+	public function get_cams($id_stasiun, $waktu)
+	{
+		$this->db->where('id_stasiun', $id_stasiun);
+        $this->db->where('waktu', $waktu);
+		$query = $this->db->get('aqm_data');
+		return $query->result();
+	}
+
 	public function add_camsdata()
 	{
 		date_default_timezone_set("Asia/Bangkok");
@@ -74,6 +95,16 @@ class Sukoharjo_m extends CI_Model
 		return $this->db->insert('aqm_data', $data);
 	}
 
+	public function update_camsdata($id_stasiun, $waktu)
+	{
+		$data = array(
+			'xtimetimes' => date("Y-m-d H:i:s")
+		);
+		$this->db->where('id_stasiun', $id_stasiun);
+        $this->db->where('waktu', $waktu);
+		return $this->db->update('aqm_data', $data);
+	}
+
 	public function add_cemsdata()
 	{
 		date_default_timezone_set("Asia/Bangkok");
@@ -86,5 +117,15 @@ class Sukoharjo_m extends CI_Model
 			'temperature' 		=> $this->input->post('temperature')
 		);
 		return $this->db->insert('aqm_data', $data);
+	}
+
+	public function update_cemsdata($id_stasiun, $waktu)
+	{
+		$data = array(
+			'xtimetimes' => date("Y-m-d H:i:s")
+		);
+		$this->db->where('id_stasiun', $id_stasiun);
+        $this->db->where('waktu', $waktu);
+		return $this->db->update('aqm_data', $data);
 	}
 }
