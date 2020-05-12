@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//KALIMANTAN
+$route['api/add/aqmdata/kalimantan']	= 'kalimantan/aqmdata';
+
 //JADEBEK
 $route['api/add/aqmdata/bekasi']		= 'bekasi/aqmdata';
 $route['api/add/aqmdata/depok']			= 'depok/aqmdata';
