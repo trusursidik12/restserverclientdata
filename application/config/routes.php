@@ -1,6 +1,9 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
 
+//JAKARTA
+$route['api/add/aqmdata/jakarta'] 	    = 'jakarta/aqmdata';
+
 //SUKOHARJO
 $route['api/get/data/cemsrum']			= 'sukoharjo/cemsrumdata';
 $route['api/get/data/plesan']			= 'sukoharjo/plesandata';
@@ -25,3 +28,4 @@ $route['api/add/aqmdata/cilegon']		= 'cilegon/aqmdata';
 $route['default_controller']			= 'api';
 $route['404_override']					= '';
 $route['translate_uri_dashes']			= FALSE;
+
