@@ -1,5 +1,7 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+//JAWA TIMUR
+$route['api/add/aqmdata/jawatimur']		= 'jawatimur/aqmdata';
 
 //SUMATERA
 $route['api/add/aqmdata/sumatera']		= 'sumatera/aqmdata';
@@ -35,6 +37,7 @@ $route['api/get/data/ciwandan']			= 'cilegon/ciwandandata';
 $route['api/get/ispu/ciwandan']			= 'cilegon/ciwandanispu';
 
 $route['api/add/aqmdata/cilegon']		= 'cilegon/aqmdata';
+
 
 $route['default_controller']			= 'api';
 $route['404_override']					= '';
