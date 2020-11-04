@@ -27,6 +27,9 @@ $route['api/add/cemsdata/sukoharjo']	= 'sukoharjo/cemsdata';
 $route['api/add/camsdata/sukoharjo']	= 'sukoharjo/camsdata';
 
 //CILEGON
+$route['api/get/data/outdoor/pci']      = 'cilegon/pcioutdoordata';
+$route['api/get/ispu/outdoor/pci']      = 'cilegon/pcioutdoorispu';
+
 $route['api/get/data/pci']				= 'cilegon/pcidata';
 $route['api/get/ispu/pci']				= 'cilegon/pciispu';
 $route['api/get/data/simpangtiga']		= 'cilegon/simpangtigadata';
@@ -35,6 +38,8 @@ $route['api/get/data/merak']			= 'cilegon/merakdata';
 $route['api/get/ispu/merak']			= 'cilegon/merakispu';
 $route['api/get/data/ciwandan']			= 'cilegon/ciwandandata';
 $route['api/get/ispu/ciwandan']			= 'cilegon/ciwandanispu';
+
+
 
 $route['api/add/aqmdata/cilegon']		= 'cilegon/aqmdata';
 

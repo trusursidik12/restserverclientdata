@@ -221,5 +221,41 @@ class Cilegon extends RestController {
         }
     }
 
+    public function pcioutdoordata_get()
+    {
+
+        
+        $data = $this->cilegon_m->pci_data_outdoor();
+
+        if ($data) {
+            $this->response([
+                    'status'    => true,
+                    'data'      => $data
+                ], 200);
+        } else {
+            $this->response([
+                    'status'    => false,
+                    'message'   => 'Data Tidak Ditemukan'
+                ], 404);
+        }
+    }
+
+    public function pcioutdoorispu_get()
+    {
+        $data = $this->cilegon_m->pci_ispu_outdoor();
+
+        if ($data) {
+            $this->response([
+                    'status'    => true,
+                    'data'      => $data
+                ], 200);
+        } else {
+            $this->response([
+                    'status'    => false,
+                    'message'   => 'Data Tidak Ditemukan'
+                ], 404);
+        }
+    }
+
 
 }

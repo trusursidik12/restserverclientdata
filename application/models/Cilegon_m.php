@@ -152,4 +152,23 @@ class Cilegon_m extends CI_Model
         $this->db->where('waktu', $waktu);
 		return $this->db->update('aqm_data', $data);
 	}
+
+	//OUTDOOR DATA KONSENTRASI
+	public function pci_data_outdoor($id = FALSE)
+	{
+		$this->db->order_by('id', 'DESC');
+		$this->db->where('id_stasiun', 'CILEGON_PCI');
+		$this->db->limit('1');
+		$query = $this->db->get('aqm_data');
+		return $query->row_array();
+	}
+	//OUTDOOR DATA ISPU
+	public function pci_ispu_outdoor($id = FALSE)
+	{
+		$this->db->order_by('id', 'DESC');
+		$this->db->where('id_stasiun', 'CILEGON_PCI');
+		$this->db->limit('1');
+		$query = $this->db->get('aqm_ispu');
+		return $query->row_array();
+	}
 }
