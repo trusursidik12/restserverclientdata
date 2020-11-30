@@ -14,7 +14,7 @@ class Indoor_m extends CI_Model
 		$this->db->order_by('waktu', 'DESC');
 		$this->db->limit('1');
 		$query = $this->db->get('aqm_data');
-		return $query->row_array();
+		return $query->result_array();
     }
     
     public function get_ispu($id_stasiun)
@@ -23,6 +23,6 @@ class Indoor_m extends CI_Model
 		$this->db->order_by('waktu', 'DESC');
 		$this->db->limit('1');
 		$query = $this->db->get('aqm_ispu');
-		return $query->row_array();
+		return $query->result_array();
 	}
 }
