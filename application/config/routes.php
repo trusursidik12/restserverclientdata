@@ -1,5 +1,10 @@
 <?php
 defined('BASEPATH') OR exit('No direct script access allowed');
+
+//INDOOR
+$route['api/show/indoor/data']          = 'indoor/aqmdata';
+$route['api/show/indoor/ispu']          = 'indoor/aqmispu';
+
 //JAWA TIMUR
 $route['api/add/aqmdata/jawatimur']		= 'jawatimur/aqmdata';
 
